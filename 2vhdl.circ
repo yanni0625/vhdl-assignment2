@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project source="5.0.0" version="1.0">
+  This file is intended to be loaded by Logisim-evolution v5.0.0(https://github.com/logisim-evolution/).
+
+  <lib desc="#Wiring" name="0">
+    <tool name="Pin">
+      <a name="appearance" val="classic"/>
+    </tool>
+  </lib>
+  <lib desc="#Gates" name="1"/>
+  <lib desc="#Plexers" name="2"/>
+  <lib desc="#Arithmetic" name="3"/>
+  <lib desc="#FPArithmetic" name="4"/>
+  <lib desc="#Memory" name="5"/>
+  <lib desc="#I/O" name="6"/>
+  <lib desc="#TTL" name="7"/>
+  <lib desc="#TCL" name="8"/>
+  <lib desc="#Base" name="9"/>
+  <lib desc="#BFH-Praktika" name="10"/>
+  <lib desc="#Input/Output-Extra" name="11"/>
+  <lib desc="#Soc" name="12"/>
+  <main name="main"/>
+  <options>
+    <a name="gateUndefined" val="ignore"/>
+    <a name="simlimit" val="1000"/>
+    <a name="simrand" val="0"/>
+  </options>
+  <mappings>
+    <tool map="Button2" name="Poke Tool"/>
+    <tool map="Button3" name="Menu Tool"/>
+    <tool map="Ctrl Button1" name="Menu Tool"/>
+  </mappings>
+  <toolbar>
+    <tool name="Poke Tool"/>
+    <tool name="Edit Tool"/>
+    <tool name="Wiring Tool"/>
+    <tool name="Text Tool"/>
+    <tool name="Image"/>
+    <sep/>
+    <tool name="Pin"/>
+    <tool name="Pin">
+      <a name="facing" val="west"/>
+      <a name="type" val="output"/>
+    </tool>
+    <sep/>
+    <tool name="NOT Gate"/>
+    <tool name="AND Gate"/>
+    <tool name="OR Gate"/>
+    <tool name="XOR Gate"/>
+    <tool name="NAND Gate"/>
+    <tool name="NOR Gate"/>
+    <sep/>
+    <tool name="D Flip-Flop"/>
+    <tool name="Register"/>
+  </toolbar>
+  <circuit name="main">
+    <a name="appearance" val="logisim_evolution"/>
+    <a name="circuit" val="main"/>
+    <a name="circuitnamedboxfixedsize" val="true"/>
+    <a name="simulationFrequency" val="1.0"/>
+    <comp lib="0" loc="(460,280)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="d0"/>
+    </comp>
+    <comp lib="0" loc="(460,300)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="d1"/>
+    </comp>
+    <comp lib="0" loc="(460,320)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="d2"/>
+    </comp>
+    <comp lib="0" loc="(460,340)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="d3"/>
+    </comp>
+    <comp lib="0" loc="(460,360)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="d4"/>
+    </comp>
+    <comp lib="0" loc="(460,380)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="d5"/>
+    </comp>
+    <comp lib="0" loc="(460,400)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="d6"/>
+    </comp>
+    <comp lib="0" loc="(460,420)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="d7"/>
+    </comp>
+    <comp lib="0" loc="(460,440)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="label" val="s"/>
+      <a name="width" val="3"/>
+    </comp>
+    <comp lib="0" loc="(680,280)" name="Pin">
+      <a name="appearance" val="NewPins"/>
+      <a name="facing" val="west"/>
+      <a name="label" val="y"/>
+      <a name="type" val="output"/>
+    </comp>
+    <comp loc="(680,280)" name="p2"/>
+  </circuit>
+  <vhdl appearance="logisim_evolution" name="p2">library ieee;
+use ieee.std_logic_1164.all;
+
+entity p2 is
+    port (
+        d0 : in  std_logic;
+        d1 : in  std_logic;
+        d2 : in  std_logic;
+        d3 : in  std_logic;
+        d4 : in  std_logic;
+        d5 : in  std_logic;
+        d6 : in  std_logic;
+        d7 : in  std_logic;
+        s  : in  std_logic_vector(2 downto 0);
+        y  : out std_logic
+    );
+end entity p2;
+
+architecture behavioral of p2 is
+begin
+    with s select
+        y &lt;= d0 when "000",
+             d1 when "001",
+             d2 when "010",
+             d3 when "011",
+             d4 when "100",
+             d5 when "101",
+             d6 when "110",
+             d7 when "111",
+             'X' when others;
+end architecture behavioral;</vhdl>
+</project>
